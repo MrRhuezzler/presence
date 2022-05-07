@@ -1,12 +1,13 @@
 import Room from "../db/models/room.js"
 import Period from "../db/models/period.js";
+import { otpGenerator } from "../utils/otpGenerator.js";
 
 export const createNewRoom = async (req, res) => {
 
     const { period_code } = req.body;
 
     // generate a random otp
-    const generatedOTP = 123456;
+    const generatedOTP = otpGenerator();
 
     const room = await Room.create({
         otp: generatedOTP

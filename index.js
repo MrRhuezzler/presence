@@ -9,25 +9,12 @@ const PORT = 3000;
 
 sequelize.sync().then(async () => {
 
-    // const user = await User.create({ name: "STUDENT 1", email: "defdef@gmail.com", password: "123456", isFaculty: false });
-    // const user = await User.create({ name: "TEACHER 1", email: "abcabc@gmail.com", password: "123456", isFaculty: true });
-
-    // const period = await Period.create({
-    //     code : '20XT42',
-    //     name : 'Operating Systems',
-    //     description : 'MSC TCS - 2nd Year'
-    // });
-    // const period = await Period.create({
-    //     code : '20XT41',
-    //     name : 'Stochastic Process',
-    //     description : 'MSC TCS - 2nd Year'
-    // });
-    // console.log(period);
-
-    // const user = await User.findOne({ where: { email: 'defdef@gmail.com' } });
+    // const emails = ['20pt01@psgtech.ac.in', '20pt12@psgtech.ac.in', '20pt25@psgtech.ac.in', '20pt33@psgtech.ac.in', 'nadarajan@psgtech.ac.in'];
     // const period = await Period.findOne({ where: { code: '20XT41' } });
-    // await user.addPeriod(period);
-    // await period.addUser(user);
+    // emails.forEach(async email => {
+    //     const user = await User.findOne({ where: { email: email } });
+    //     await user.addPeriod(period);
+    // });
 
     app.listen(PORT, () => {
         console.log(`Server is running on port ${PORT}`);

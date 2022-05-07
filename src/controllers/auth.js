@@ -7,7 +7,7 @@ const userLogin = async (req, res) => {
 
     try {
 
-        const user = await User.findOne({ email });
+        const user = await User.findOne({ where: { email } });
         const isOkay = await bcrypt.compare(password, user.password);
         if (!isOkay) {
             return res.status(400).json({ errors: [{ "msg": "Please check your credentials" }] });

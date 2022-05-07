@@ -11,11 +11,11 @@ const hashPassword = async (password) => {
     }
 }
 
-const createNewUser = async (res, req) => {
+const createNewUser = async (req, res) => {
 
     const { email, password, name } = req.body;
 
-    const user = User.findOne({ email });
+    const user = await User.findOne({ where: { email: email } });
     if (user) {
         return res.status(400).json({ errors: [{ "msg": "User already exists" }] });
     }
@@ -27,10 +27,12 @@ const createNewUser = async (res, req) => {
         await User.create({
             email,
             password: hashedPassword,
-            name
+            name,
+            isFaculty: false,
         });
 
     } catch (err) {
+        console.log(err);
         return res.status(500).json({ errors: [{ "msg": "Error creating the user" }] });
     }
 
@@ -38,4 +40,34 @@ const createNewUser = async (res, req) => {
 
 }
 
-export { createNewUser };
+const createNewFaculty = async (req, res) => {
+
+    const { email, password, name } = req.body;
+
+    const user = await User.findOne({ where: { email: email } });
+    if (user) {
+        return res.status(400).json({ errors: [{ "msg": "User already exists" }] });
+    }
+
+    try {
+
+        const hashedPassword = await hashPassword(password);
+
+        await User.create({
+            email,
+            password: hashedPassword,
+            name,
+            isFaculty: true,
+        });
+
+    } catch (err) {
+        console.log(err);
+        return res.status(500).json({ errors: [{ "msg": "Error creating the user" }] });
+    }
+
+    return res.status(201).json({ 'message': 'User created successfully' });
+
+}
+
+
+export { createNewUser, createNewFaculty };

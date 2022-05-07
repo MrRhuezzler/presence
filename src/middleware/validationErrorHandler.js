@@ -7,6 +7,6 @@ export const validationErrorHandler = (req, res, next) => {
         return res.status(400).json({ errors: errors.array() });
     }
 
-    return next();
+    next();
 
 };

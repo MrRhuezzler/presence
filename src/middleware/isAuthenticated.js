@@ -2,7 +2,7 @@ import User from "../db/models/user.js";
 
 export const isAuthenticated = async (req, res, next) => {
 
-    req.user = await User.findOne({ email: 'abcabc@gmail.com' });
+    req.user = await User.findOne({ where: { email: 'nadarajan@psgtech.ac.in' } });
 
     // const authHeader = req.headers.Authorization;
     // const userEmail = Buffer.from(authHeader, 'base64').toString();
