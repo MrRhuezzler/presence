@@ -6,5 +6,7 @@ Presence, is a mobile application built using Flutter that can be used for takin
 - The usual method of manually entering attendance is error prone and slow at times
 - We need a way for recording the attendance quickly and cheaply
 - Hardware methods are expensive. A fingerprint or face recognition device will take too much time to record the attendance of every single student in the classroom
-- Proxying should not be allowed
-- The solution needs to be reliable (Methods like face recognition may not be reliable)
+- Proxying should be avoided as much as possible
+- The solution needs to be reliable.
+
+### Database Design
