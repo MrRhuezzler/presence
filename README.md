@@ -18,3 +18,6 @@ Presence, is a mobile application built using Flutter that can be used for takin
 
 ### Database Design
 ![DB Designs](/images/db.png)
+
+### Presentation Link
+https://docs.google.com/presentation/d/1YMLFLWQAY50yhAHleE92bdTSfuB_uhfIyL9NzZ92fRw/edit?usp=sharing
