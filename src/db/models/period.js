@@ -1,5 +1,7 @@
 import { Model, DataTypes } from 'sequelize';
 import sequelize from '../index.js';
+import Room from './room.js'
+import Course from './course.js'
 
 class Period extends Model { }
 
@@ -20,5 +22,11 @@ Period.init({
     sequelize,
     modelName: 'Period',
 });
+
+Course.hasMany(Period);
+Period.belongsTo(Course);
+
+Period.hasMany(Room);
+Room.belongsTo(Period);
 
 export default Period;
