@@ -1,7 +1,8 @@
 import express from "express";
 import helmet from "helmet";
 import morgan from "morgan";
-import logger from "./utils/logger";
+import logger from "./utils/logger.js";
+import apiRouter from './routes/api.js';
 
 const app = express();
 
@@ -15,6 +16,7 @@ app.use(express.json());
 app.use(morgan('combined'));
 
 // routes
+app.use('/api', apiRouter);
 
 // default route
 
