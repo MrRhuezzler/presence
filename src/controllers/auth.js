@@ -13,9 +13,12 @@ const userLogin = async (req, res) => {
             return res.status(400).json({ errors: [{ "msg": "Please check your credentials" }] });
         }
 
+        return res.status(200).json({ email: user.email, name: user.name, isFaculty: user.isFaculty });
+
     } catch (err) {
         return res.status(400).json({ errors: [{ "msg": "Please check your credentials" }] });
     }
+
 
 }
 
