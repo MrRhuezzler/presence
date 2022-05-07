@@ -5,19 +5,19 @@ import Room from './room.js';
 import Course from './course.js';
 import bcrypt from 'bcryptjs';
 
-class User extends Model {
-    static async hashPassword(password) {
-        try {
-            const salt = await bcrypt.genSalt(10);
-            const hash = await bcrypt.hash(password, salt);
-            return hash;
-        } catch (err) {
-            throw err;
-        }
-    }
-}
+// class User extends Model {
+//     static async hashPassword(password) {
+//         try {
+//             const salt = await bcrypt.genSalt(10);
+//             const hash = await bcrypt.hash(password, salt);
+//             return hash;
+//         } catch (err) {
+//             throw err;
+//         }
+//     }
+// }
 
-User.init({
+const User = sequelize.define('user', {
     name: {
         type: DataTypes.STRING,
         allowNull: false
@@ -35,21 +35,15 @@ User.init({
         allowNull: false,
         default: false
     }
-}, {
-    sequelize,
-    modelName: 'User',
 });
 
 User.hasOne(Course);
-Course.belongsTo(User, {as: 'tutor'});
+Course.belongsTo(User);
 
-User.belongsToMany(Room, {through: 'Attendance', as: 'attended'});
-Room.belongsToMany(User, {through: 'Attendance', as: 'present'});
+User.belongsToMany(Room, { through: 'attendance' });
+Room.belongsToMany(User, { through: 'attendance' });
 
-User.belongsToMany(Period, {through: 'Handles', as: 'teaches'});
-Period.belongsToMany(User, {through: 'Handles', as: 'taughtBy'});
-
-User.belongsToMany(Period, {through: 'Enrolled', as: 'enrolledIn'});
-Period.belongsToMany(User, {through: 'Enrolled', as: 'students'});
+User.belongsToMany(Period, { through: 'handle' });
+Period.belongsToMany(User, { through: 'handle' });
 
 export default User;

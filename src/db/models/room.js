@@ -1,12 +1,13 @@
 import { Model, DataTypes } from 'sequelize';
 import sequelize from '../index.js';
 
-class Room extends Model { }
+// class Room extends Model { }
 
-Room.init({
+const Room = sequelize.define('room', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
+        autoIncrement: true,
     },
     notes: {
         type: DataTypes.STRING,
@@ -16,9 +17,6 @@ Room.init({
         type: DataTypes.INTEGER,
         allowNull: false
     }
-}, {
-    sequelize,
-    modelName: 'Room',
 });
 
 export default Room;

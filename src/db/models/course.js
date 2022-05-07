@@ -1,9 +1,9 @@
 import { Model, DataTypes } from 'sequelize';
 import sequelize from '../index.js';
 
-class Course extends Model { }
+// class Course extends Model { }
 
-Course.init({
+const Course = sequelize.define('course', {
     id: {
         type: DataTypes.STRING,
         primaryKey: true,
@@ -16,9 +16,6 @@ Course.init({
         type: DataTypes.INTEGER,
         allowNull: false
     }
-}, {
-    sequelize,
-    modelName: 'Course',
 });
 
 export default Course;

@@ -10,11 +10,11 @@ const userLogin = async (req, res) => {
         const user = await User.findOne({ email });
         const isOkay = await bcrypt.compare(password, user.password);
         if (!isOkay) {
-            return res.status(400).json({ errors: ["Please check your credentials"] });
+            return res.status(400).json({ errors: [{ "msg": "Please check your credentials" }] });
         }
 
     } catch (err) {
-        return res.status(400).json({ errors: ["Please check your credentials"] });
+        return res.status(400).json({ errors: [{ "msg": "Please check your credentials" }] });
     }
 
 }

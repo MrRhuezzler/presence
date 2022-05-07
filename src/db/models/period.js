@@ -3,9 +3,9 @@ import sequelize from '../index.js';
 import Room from './room.js'
 import Course from './course.js'
 
-class Period extends Model { }
+// class Period extends Model { }
 
-Period.init({
+const Period = sequelize.define('period', {
     code: {
         type: DataTypes.STRING,
         primaryKey: true
@@ -18,9 +18,6 @@ Period.init({
         type: DataTypes.STRING,
         allowNull: true
     }
-}, {
-    sequelize,
-    modelName: 'Period',
 });
 
 Course.hasMany(Period);
